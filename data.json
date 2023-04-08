@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "name": "Chittranja",
+      "password": 1234
+    }
+  ],
+  "store_details": {
+    "tax": 13,
+    "table_count": 5
+  },
+  "side_bar":[ "Order", "Dashboard", "Profile"],
+  "menu": {
+    "categries":["Pizza", "Burger", "Combo"],
+    "Pizza":[{
+        "name": "Chicken Pizza",
+        "price": "$10"
+    },{
+        "name": "Cheese Pizza",
+        "price": "$12" 
+    }],
+    "Burger":[{
+        "name": "Chicken Burger",
+        "price": "$10"
+    },{
+        "name": "Cheese Burger",
+        "price": "$12" 
+    }],
+    "Combo":[{
+        "name": "Chicken Burger Plate",
+        "price": "$20"
+    },{
+        "name": "Cheese Pizza Platter",
+        "price": "$12" 
+    }]
+  }
+}
