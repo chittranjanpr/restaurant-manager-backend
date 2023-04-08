@@ -1,0 +1,27 @@
+body {
+  background: #abcdef;
+  font-family: Assistant, sans-serif;
+  display: flex;
+  height: 98vh;
+}
+
+.loader {
+  border: 10px solid #fcfcfc;
+  border-radius: 50%;
+  border-top: 10px solid #136a8a;
+  border-bottom: 10px solid #136a8a;
+  width: 10px;
+  height: 10px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

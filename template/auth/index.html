@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Assistant:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/authStyle.css">
+        <link rel="stylesheet" href="/static/css/globalCss.css">
+        <title>{{title}}</title>
+    </head>
+    <body>
+    <section class='login' id='login'>
+        <div class='head'>
+            <h1 class='company'>{{ appName }}</h1>
+        </div>
+        <from class='form' name="form" method="POST">
+            <input name="password" id="password" type="password" placeholder='Enter Your Code' class='password' maxlength="4" size="4" ><br>
+            <button class='btn-login' id='do-login' onclick="submit()" value="Login">Login</button>
+            <div id="loader" class="loader" style="display: none;"></div>
+            <div id="message"></div>
+        </div>
+    </section>
+    <script>
+        function submit(){
+            document.getElementById('loader').style.display = "block";
+            // document.getElementById('do-login').disabled= "disabled";
+            let value = document.getElementById('password').value
+            let data = { 'password' : value };
+            fetch('http://127.0.0.1:8000/auth_login', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loader').style.display = "none";
+                // document.getElementById('do-login').disabled= "enable";
+                console.log(data)
+                if(data.success == true){
+                    window.location.href = "/mainPage";
+                } else{
+                    document.getElementById('message').innerHTML = "Retry"
+                }
+            })
+            .catch(error => {
+                document.getElementById('loader').style.display = "none";
+                // document.getElementById('do-login').disabled= "enable";
+                document.getElementById('message').innerHTML = "Retry"
+                console.error(error)});
+        }
+    </script>
+    </body>
+</html>

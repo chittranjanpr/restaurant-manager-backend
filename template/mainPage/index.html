@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Assistant:400,700" rel="stylesheet">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="/static/css/globalCss.css">
+        <link rel="stylesheet" href="/static/css/orderPage.css">
+    </head>
+    <body>
+        <section class="card">
+            <div class="sidebar"> 
+                {% for value in data.side_bar %}
+                <div class="list_sidebar" id={{value}}>{{ value }}</div>
+                {% endfor %}
+            </div>
+            <div class="center_content">
+                <div class="header" id="header">Orders Page</div>
+                <div id="center_content_0">1</div>
+                <div id="center_content_1">2</div>
+                <div id="center_content_2">3</div>
+                <div class="footer" id="footer">footer</div>
+            </div>
+            {{ current_side_bar }}
+        </section>
+    </body>
+    <script>
+        var current_side_bar = 0;
+        var dataString = "{{ data.store_details.table_count }}";
+        // var data = JSON.parse(dataString);
+
+        console.log(dataString)
+        // JSON
+        // for(i=current_side_bar; i < )
+
+        // var data = {}
+        // fetch('http://127.0.0.1:8000/get_store_details')
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log("aaaa", data)
+        // })
+    </script>
+</html>
