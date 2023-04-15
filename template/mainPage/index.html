@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Assistant:400,700" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <title>{{ title }}</title>
         <link rel="stylesheet" href="/static/css/globalCss.css">
         <link rel="stylesheet" href="/static/css/orderPage.css">
@@ -16,20 +17,90 @@
             </div>
             <div class="center_content">
                 <div class="header" id="header">Orders Page</div>
-                <div id="center_content_0">1</div>
-                <div id="center_content_1">2</div>
-                <div id="center_content_2">3</div>
-                <div class="footer" id="footer">footer</div>
+                <!-- TABLE PAGE -->
+                <div class="column_table" id="column_table">
+                    {% for i in range(1,data.store_details.table_count + 1) %}
+                        <div class="table_cards" id='center_content_{{ i }}' onclick="table_click('{{i}}')">
+                            <div>Table: {{ i }}</div>
+                            <div class="select_text">Select</div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- MENU PAGE -->
+                <div class="column_menu_page" id="column_menu_page">
+                    <div class="column_list">
+                        {% for value in menu_items | default([]) %}
+                            <div class="list_items" onclick="click_list_items(`{{value}}`)">
+                                <p>{{ value.name }}</p>
+                                <p>{{ value.price }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="column_display"> 
+                        <div class="item_display_column_title" id="item_display_column_title" ></div>
+                        <div class="item_display_column_headers">
+                            <div>Quantity</div>
+                            <div>Item</div>
+                            <div>Price</div>
+                        </div>
+                        <div id="item_display_column_body"> No items to display</div>
+                        <div class="subtotal" id="subtotal"></div>
+                    </div>
+                </div>
+                <!-- CHECKOUT PAGE -->
+                <div id="column_checkout_page" class="column_checkout_page">
+
+                </div>
+                
+                <div class="footer" id="footer">
+                    <div class="check_out" id="check_out" onclick="click_checkout()">Check out -></div>
+                </div>
             </div>
-            {{ current_side_bar }}
         </section>
     </body>
-    <script>
+    <script type="text/javascript">
         var current_side_bar = 0;
-        var dataString = "{{ data.store_details.table_count }}";
-        // var data = JSON.parse(dataString);
+        var current_table = null;
+        var selected_items = [];
 
-        console.log(dataString)
+        var dataString = JSON.parse('{{ data | tojson | safe }}')
+
+        function click_checkout(){
+            document.getElementById('column_table').style.display = 'none'
+            document.getElementById('column_menu_page').style.display = 'none'
+        }
+        
+        function table_click(value){
+            current_table = value;
+            document.getElementById('column_table').style.display = 'none'
+            document.getElementById('column_menu_page').style.display = 'flex'
+            document.getElementById('item_display_column_title').innerHTML = 'Table No: ' + current_table
+        }
+
+        function click_list_items(value){
+            document.getElementById("item_display_column_body").innerHTML = '';
+            selected_items.push(JSON.parse(value.replace(/'/g, "\"")));
+            create_display()
+        }
+
+        function create_display(){
+            var subtotal = 0;
+            var itemList = document.getElementById("item_display_column_body");
+            for (var i = 0; i < selected_items.length; i++) {
+                var item = selected_items[i];
+                console.log(selected_items)
+                var div = document.createElement("div");
+                div.classList.add("item_display_column_body_row");
+                subtotal = subtotal + item.price
+                div.innerHTML ="<p>1 x <p/>" + "<p>" + item.name + "</p><p>$" + item.price + "</p>";
+                itemList.appendChild(div);
+            }
+            document.getElementById('subtotal').innerHTML = "Subtotal: $" + subtotal
+            document.getElementById('check_out').style.display = 'block'
+        }
+
+
+        // var data = JSON.parse(dataString);      
         // JSON
         // for(i=current_side_bar; i < )
 
