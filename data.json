@@ -2,36 +2,75 @@
   "users": [
     {
       "name": "Chittranja",
-      "password": 1234
+      "password": 1234,
+      "id": 1234
     }
   ],
   "store_details": {
     "tax": 13,
-    "table_count": 5
+    "table_count": 6
   },
-  "side_bar":[ "Order", "Dashboard", "Profile"],
-  "menu": {
-    "categries":["Pizza", "Burger", "Combo"],
-    "Pizza":[{
-        "name": "Chicken Pizza",
-        "price": "$10"
-    },{
-        "name": "Cheese Pizza",
-        "price": "$12" 
-    }],
-    "Burger":[{
-        "name": "Chicken Burger",
-        "price": "$10"
-    },{
-        "name": "Cheese Burger",
-        "price": "$12" 
-    }],
-    "Combo":[{
-        "name": "Chicken Burger Plate",
-        "price": "$20"
-    },{
-        "name": "Cheese Pizza Platter",
-        "price": "$12" 
-    }]
-  }
+  "side_bar": ["Order", "Dashboard", "Profile"],
+  "menu_items": [
+    {
+      "name": "Chicken Pizza",
+      "price": 10,
+      "id": 1
+    },
+    {
+      "name": "Cheese Pizza",
+      "price": 15,
+      "id": 2
+    },
+    {
+      "name": "Suchi",
+      "price": 25,
+      "id": 3
+    },
+    {
+      "name": "Pasta",
+      "price": 20,
+      "id": 4
+    },
+    {
+      "name": "Mutton Soup",
+      "price": 10,
+      "id": 5
+    },
+    {
+      "name": "Hyderabad Briyani",
+      "price": 15,
+      "id": 6
+    },
+    {
+      "name": "Sweet Corn Soup",
+      "price": 25,
+      "id": 7
+    },
+    {
+      "name": "Afghani Chicken",
+      "price": 20,
+      "id": 8
+    },
+    {
+      "name": "Dragon Chicken",
+      "price": 10,
+      "id": 9
+    },
+    {
+      "name": "Falooda",
+      "price": 15,
+      "id": 10
+    },
+    {
+      "name": "Cheese cake",
+      "price": 25,
+      "id": 11
+    },
+    {
+      "name": "Wine",
+      "price": 20,
+      "id": 12
+    }
+  ]
 }
