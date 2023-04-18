@@ -1,0 +1,2 @@
+STORE_DETAILS_FILE_NAME = 'data.json'
+SESSIONS_DETAILS_FILE_NAME = 'userSessions.json'
