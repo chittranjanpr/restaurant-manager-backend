@@ -11,6 +11,7 @@
     "table_count": 6
   },
   "side_bar": ["Order", "Dashboard", "Profile"],
+  "dashboard": ["Create User", "Sales Report", "Inventory Management"],
   "menu_items": [
     {
       "name": "Chicken Pizza",
