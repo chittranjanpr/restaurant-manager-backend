@@ -53,3 +53,23 @@ def save_data(file_name, data):
         print("Error:", e)
         response_data = {'status': 'errorpppppp', 'message': str(e)}
         return jsonify(response_data), 400
+
+def create_new_user(file_name, data, password):
+    try:
+        with open(file_name,'r+') as file:
+            file_data = json.load(file)
+
+            # Check if it is duplicate
+            for d in file_data:
+                if d[password]:
+                    print("duplicate one")
+                    break
+
+            file_data.append(data)
+            file.seek(0)
+            json.dump(file_data, file, indent = 4)
+
+    except Exception as e:
+        print("Error:", e)
+        response_data = {'status': 'Error in creating new user', 'message': str(e)}
+        return jsonify(response_data), 400

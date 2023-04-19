@@ -1,7 +1,7 @@
 from flask import request, jsonify
 from datetime import datetime
 
-from common import get_all_data, get_clockin_and_clockout, save_data
+from common import get_all_data, get_clockin_and_clockout, save_data, create_new_user
 import constants
 
 def auth_login():
@@ -13,7 +13,6 @@ def auth_login():
     get_data = get_data.get_json()
 
     user_id = param1['password']
-    print(get_data[user_id])
     now = datetime.now()
     date = now.strftime("%m/%d/%Y")   
 
@@ -70,3 +69,28 @@ def clock_in():
         response_data = {'status': 'error', 'message': str(e)}
         return jsonify(response_data), 400
 
+
+def create_user():
+    try:
+        param = request.get_json()
+        name = param['name']
+        password = param['password']
+        is_admin = param['is_admin']
+        data = {
+            password: {
+                "is_clock_in": False,
+                "name": name,
+                "password": password,
+                "role": is_admin,
+                "session_details": [
+                    { "clock_in_time": "", "clock_out_time": "", "date": "" }
+                ]
+            }
+        }
+        response = create_new_user(constants.SESSIONS_DETAILS_FILE_NAME, data, password)
+        return jsonify({'success': True}), 200
+
+    except Exception as e:
+        print("Error", e)
+        response_data = {'status': 'error', 'message': str(e)}
+        return jsonify(response_data), 400

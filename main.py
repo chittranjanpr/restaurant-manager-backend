@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 
 from home import fetch_store_details
-from auth import auth_login, clock_in
+from auth import auth_login, clock_in, create_user
 from orders import checkout_save
 
 app = Flask(__name__,template_folder='template')
@@ -23,6 +23,11 @@ def home():
 @app.route('/checkout_save')
 def checkout():
     return checkout_save()
+
+
+@app.route('/create_user', methods=['POST'])
+def createUser():
+    return create_user()
 
 if __name__ == '__main__':
     app.run(port = 8000)

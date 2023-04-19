@@ -1,11 +1,32 @@
-{
-  "1234": {
-    "is_clock_in": false,
-    "name": "Chittranjan",
-    "password": 1234,
-    "role": "admin",
-    "session_details": [
-      { "clock_in_time": "", "clock_out_time": "", "date": "" }
-    ]
-  }
-}
+[
+    {
+        "123456": {
+            "is_clock_in": false,
+            "name": "Thanushiya",
+            "password": "123456",
+            "role": true,
+            "session_details": [
+                {
+                    "clock_in_time": "",
+                    "clock_out_time": "",
+                    "date": ""
+                }
+            ]
+        }
+    },
+    {
+        "2343545": {
+            "is_clock_in": false,
+            "name": "Saddist",
+            "password": "2343545",
+            "role": false,
+            "session_details": [
+                {
+                    "clock_in_time": "",
+                    "clock_out_time": "",
+                    "date": ""
+                }
+            ]
+        }
+    }
+]
