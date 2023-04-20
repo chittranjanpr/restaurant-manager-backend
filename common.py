@@ -4,16 +4,11 @@ from flask import jsonify
 
 import constants
 
-def get_all_data():
-    if not os.path.exists(constants.STORE_DETAILS_FILE_NAME):
-        with open(constants.STORE_DETAILS_FILE_NAME, 'w') as f:
-            json.dump({
-                "users": [{
-                    "name": "Chittranjann",
-                    "password": 1234,
-                    "id": 1234
-                }]}, f)
-    with open(constants.STORE_DETAILS_FILE_NAME, 'r') as f:
+def get_all_data(fileName):
+    if not os.path.exists(fileName):
+        with open(fileName, 'w') as f:
+            json.dump({}, f)
+    with open(fileName, 'r') as f:
             json_data = json.load(f)   
      
     data = jsonify(json_data)

@@ -2,10 +2,11 @@ from flask import request, jsonify
 from datetime import datetime
 
 from common import get_all_data, get_clockin_and_clockout, save_data, create_new_user
+
 import constants
 
 def auth_login():
-    data = get_all_data()
+    data = get_all_data(constants.STORE_DETAILS_FILE_NAME)
     data = data.get_json()['users']
     param1 = request.get_json()
 

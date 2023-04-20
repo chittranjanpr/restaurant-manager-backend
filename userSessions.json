@@ -1,67 +1,11 @@
 {
-    "1234": {
-        "is_clock_in": false,
-        "name": "Thanushiya",
-        "password": "1234",
-        "role": true,
-        "session_details": [
-            {
-                "clock_in_time": "",
-                "clock_out_time": "",
-                "date": ""
-            }
-        ]
-    },
-    "2468": {
-        "is_clock_in": false,
-        "name": "Browny",
-        "password": "2468",
-        "role": true,
-        "session_details": [
-            {
-                "clock_in_time": "",
-                "clock_out_time": "",
-                "date": ""
-            }
-        ]
-    },
-    "2607": {
-        "is_clock_in": false,
-        "name": "Srinithi G",
-        "password": "2607",
-        "role": true,
-        "session_details": [
-            {
-                "clock_in_time": "",
-                "clock_out_time": "",
-                "date": ""
-            }
-        ]
-    },
-    "2323": {
-        "is_clock_in": false,
-        "name": "Chittranjan",
-        "password": "2323",
-        "role": false,
-        "session_details": [
-            {
-                "clock_in_time": "",
-                "clock_out_time": "",
-                "date": ""
-            }
-        ]
-    },
-    "0987": {
-        "is_clock_in": false,
-        "name": "Chittranjan",
-        "password": "0987",
-        "role": true,
-        "session_details": [
-            {
-                "clock_in_time": "",
-                "clock_out_time": "",
-                "date": ""
-            }
-        ]
-    }
+  "1234": {
+    "is_clock_in": false,
+    "name": "Chittranjan",
+    "password": 1234,
+    "role": "admin",
+    "session_details": [
+      { "clock_in_time": "", "clock_out_time": "", "date": "" }
+    ]
+  }
 }

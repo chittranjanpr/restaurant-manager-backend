@@ -3,7 +3,7 @@ from flask_cors import CORS
 
 from home import fetch_store_details
 from auth import auth_login, clock_in, create_user
-from orders import checkout_save
+from orders import checkout_save, submit_order
 
 app = Flask(__name__,template_folder='template')
 CORS(app)
@@ -20,9 +20,13 @@ def session():
 def home():
     return fetch_store_details()
 
-@app.route('/checkout_save')
+@app.route('/checkout_save', methods=['POST'])
 def checkout():
     return checkout_save()
+
+@app.route('/submit_order', methods=['POST'])
+def order_checkout():
+    return submit_order()
 
 
 @app.route('/create_user', methods=['POST'])
