@@ -76,8 +76,7 @@ def create_user():
         name = param['name']
         password = param['password']
         is_admin = param['is_admin']
-        data = {
-            password: {
+        data = { 
                 "is_clock_in": False,
                 "name": name,
                 "password": password,
@@ -85,10 +84,10 @@ def create_user():
                 "session_details": [
                     { "clock_in_time": "", "clock_out_time": "", "date": "" }
                 ]
-            }
         }
-        response = create_new_user(constants.SESSIONS_DETAILS_FILE_NAME, data, password)
-        return jsonify({'success': True}), 200
+        response_data = create_new_user(constants.SESSIONS_DETAILS_FILE_NAME, data, password)
+        print(response_data)
+        return jsonify(response_data['response']), response_data['status_code']
 
     except Exception as e:
         print("Error", e)

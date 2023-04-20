@@ -59,17 +59,16 @@ def create_new_user(file_name, data, password):
         with open(file_name,'r+') as file:
             file_data = json.load(file)
 
-            # Check if it is duplicate
-            for d in file_data:
-                if d[password]:
-                    print("duplicate one")
-                    break
-
-            file_data.append(data)
-            file.seek(0)
-            json.dump(file_data, file, indent = 4)
+            # check duplicate user
+            if password in file_data:
+                raise ValueError('Password Exists..Try giving new password')
+            else:
+                file_data[password] = data
+                file.seek(0)
+                json.dump(file_data, file, indent = 4)
+                return {"response": {'status': 'Successfully created new user'}, "status_code": 200}
 
     except Exception as e:
         print("Error:", e)
         response_data = {'status': 'Error in creating new user', 'message': str(e)}
-        return jsonify(response_data), 400
+        return {"response": response_data, "status_code": 422}
