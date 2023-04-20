@@ -2,4 +2,5 @@ STORE_DETAILS_FILE_NAME = 'data.json'
 SESSIONS_DETAILS_FILE_NAME = 'userSessions.json'
 ORDER_HISTORY_FILE_NAME = 'orderHistory.json'
 RESTAURANT_NAME = 'RETRO CAFE'
+SALES_REPORT = 'sales_report.json'
 TAX = 13

@@ -4,6 +4,7 @@ from flask_cors import CORS
 from home import fetch_store_details
 from auth import auth_login, clock_in, create_user
 from orders import checkout_save, submit_order
+from dashboard  import get_sales_report
 
 app = Flask(__name__,template_folder='template')
 CORS(app)
@@ -32,6 +33,11 @@ def order_checkout():
 @app.route('/create_user', methods=['POST'])
 def createUser():
     return create_user()
+
+
+@app.route('/get_sales_report', methods=['GET'])
+def getSalesReport():
+    return get_sales_report()
 
 if __name__ == '__main__':
     app.run(port = 8000)

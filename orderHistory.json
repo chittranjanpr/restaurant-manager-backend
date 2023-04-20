@@ -1,1 +1,43 @@
-{}
+{
+    "04/20/2023": [
+        {
+            "date": "04/20/2023",
+            "finalized": true,
+            "items_placed": [
+                {
+                    "id": 1,
+                    "name": "Chicken Pizza",
+                    "price": 10
+                },
+                {
+                    "id": 3,
+                    "name": "Suchi",
+                    "price": 25
+                }
+            ],
+            "items_sub_total": 35,
+            "order_id": 1,
+            "restaurant_name": "RETRO CAFE",
+            "tax": 13,
+            "total": 39.55,
+            "user_id": "1234"
+        },
+        {
+            "date": "04/20/2023",
+            "finalized": true,
+            "items_placed": [
+                {
+                    "id": 1,
+                    "name": "Chicken Pizza",
+                    "price": 10
+                }
+            ],
+            "items_sub_total": 10,
+            "order_id": 2,
+            "restaurant_name": "RETRO CAFE",
+            "tax": 13,
+            "total": 11.3,
+            "user_id": "1234"
+        }
+    ]
+}
