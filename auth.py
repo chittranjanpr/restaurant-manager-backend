@@ -92,3 +92,30 @@ def create_user():
         print("Error", e)
         response_data = {'status': 'error', 'message': str(e)}
         return jsonify(response_data), 400
+
+
+def get_revenue_tax(id): 
+    try:    
+        order_history_data = get_all_data(constants.ORDER_HISTORY_FILE_NAME).get_json()
+
+        now = datetime.now()
+        date = now.strftime("%m/%d/%Y")
+        obj = {}
+        total = 0
+        if date in order_history_data:
+            order_date_data = order_history_data[date]
+            for value in order_date_data:
+                if value['user_id'] == id:
+                    total = total + value['total']
+        obj = {
+            "revenue": total,
+            "tips": total * 0.15
+        }
+        print(obj)
+        
+        return obj, 200
+
+    except Exception as e:
+        print("Error:", e)
+        response_data = {'status': 'Error in creating new user', 'message': str(e)}
+        return {"response": response_data, "status_code":422}

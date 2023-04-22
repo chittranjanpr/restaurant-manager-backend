@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 
 from home import fetch_store_details
-from auth import auth_login, clock_in, create_user
+from auth import auth_login, clock_in, create_user, get_revenue_tax
 from orders import checkout_save, submit_order
 from dashboard  import get_sales_report, get_stocks, update_stocks
 
@@ -47,7 +47,10 @@ def getStocks():
 def updateProductStock():
     return update_stocks()
 
-
+@app.route('/get_revenue_tax/<id>', methods=['GET'])
+def getRevenueTax(id):
+    print('id--', id)
+    return get_revenue_tax(id)
 
 if __name__ == '__main__':
     app.run(port = 8000)
