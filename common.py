@@ -61,7 +61,7 @@ def create_new_user(file_name, data, password):
                 file_data[password] = data
                 file.seek(0)
                 json.dump(file_data, file, indent = 4)
-                return {"response": {'status': 'Successfully created new user'}, "status_code": 200}
+                return {"response": {'status': 'Successfully created new user', 'success': True}, "status_code": 200}
 
     except Exception as e:
         print("Error:", e)

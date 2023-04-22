@@ -4,7 +4,7 @@ from flask_cors import CORS
 from home import fetch_store_details
 from auth import auth_login, clock_in, create_user
 from orders import checkout_save, submit_order
-from dashboard  import get_sales_report
+from dashboard  import get_sales_report, get_stocks, update_stocks
 
 app = Flask(__name__,template_folder='template')
 CORS(app)
@@ -38,6 +38,16 @@ def createUser():
 @app.route('/get_sales_report', methods=['GET'])
 def getSalesReport():
     return get_sales_report()
+
+@app.route('/get_stocks', methods=['GET'])
+def getStocks():
+    return get_stocks()
+
+@app.route('/update_product_stock', methods=['POST'])
+def updateProductStock():
+    return update_stocks()
+
+
 
 if __name__ == '__main__':
     app.run(port = 8000)

@@ -6,8 +6,6 @@ from common import get_all_data, get_clockin_and_clockout, save_data, create_new
 import constants
 
 def auth_login():
-    data = get_all_data(constants.STORE_DETAILS_FILE_NAME)
-    data = data.get_json()['users']
     param1 = request.get_json()
 
     get_data = get_clockin_and_clockout()
@@ -17,24 +15,24 @@ def auth_login():
     now = datetime.now()
     date = now.strftime("%m/%d/%Y")   
 
-    user_data = {
-        "name": get_data[user_id]['name'],
-         "is_clock_in": get_data[user_id]['is_clock_in'],
-    }
-    for i in range(len(get_data[user_id]['session_details'])):
-        if get_data[user_id]['session_details'][i]['date'] == date:
-            user_data = { 
-                "clock_in_time": get_data[user_id]['session_details'][i]['clock_in_time'],
-                "clock_out_time": get_data[user_id]['session_details'][i]['clock_out_time'], **user_data
-            }
-
+    user_data = {}
     check = False
-    
-    for i in range (len(data)):
-         if data[i]['password'] ==  eval(param1['password']):
-            check = True
 
-    return jsonify({ 'success': check, "resp": user_data }), 200
+    if param1['password'] in get_data:
+        check = True
+        user_data = {
+            "name": get_data[user_id]['name'],
+            "is_clock_in": get_data[user_id]['is_clock_in'],
+            "is_admin": get_data[user_id]['role'],
+        }
+        for i in range(len(get_data[user_id]['session_details'])):
+            if get_data[user_id]['session_details'][i]['date'] == date:
+                user_data = { 
+                    "clock_in_time": get_data[user_id]['session_details'][i]['clock_in_time'],
+                    "clock_out_time": get_data[user_id]['session_details'][i]['clock_out_time'], **user_data
+                }
+
+    return jsonify({ 'success': check, "resp": user_data}),200
 
 def clock_in():
     try:
